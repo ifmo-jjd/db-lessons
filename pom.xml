@@ -13,17 +13,13 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-<!--    2.1 apache httpclient 4 / 5-->
-<!--    2.2 jackson-core 2.14.1 -->
-<!--    2.3 jackson-annotations -->
-<!--    2.4 jackson-databind -->
-<!--    2.5 jackson-datatype-jsr310 -->
+
     <dependencies>
         <!-- postgresql driver for JDBC -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.1</version>
+            <version>42.5.1</version> <!-- 42.4.1, 42.5.3 -->
             <scope>runtime</scope> <!-- требуется только во время выполнения программы -->
         </dependency>
 
