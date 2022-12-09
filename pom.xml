@@ -53,6 +53,9 @@
             <version>2.14.1</version>
         </dependency>
 
+        <!-- jakarta.persistence-api -->
+        <!-- eclipselink -->
+
     </dependencies>
 
 </project>

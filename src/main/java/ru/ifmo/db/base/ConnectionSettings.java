@@ -9,6 +9,9 @@ public class ConnectionSettings {
     public static final String CONNECTION_STR =
             "jdbc:postgresql://localhost:5432/db_lessons";
 
+    // JDBC - Java DataBase Connectivity
+    // стандарт взаимодействия java приложений с реляционными СУБД
+
     // имя пользователя и его пароль для подключения
     // к серверу Postgresql
     public static final String LOGIN = "ifmo";
