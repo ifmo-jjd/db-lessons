@@ -7,11 +7,6 @@
 
     <persistence-unit name="ormLesson" transaction-type="RESOURCE_LOCAL">
 
-        <class>ru.ifmo.lessons.jpa.entity.Author</class>
-        <class>ru.ifmo.lessons.jpa.entity.Article</class>
-        <class>ru.ifmo.lessons.jpa.entity.Nomination</class>
-
-
         <properties>
             <!--название бд-->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_lessons"/>
