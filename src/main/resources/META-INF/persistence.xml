@@ -7,6 +7,8 @@
 
     <persistence-unit name="ormLesson" transaction-type="RESOURCE_LOCAL">
 
+        <class>ru.ifmo.db.jpa.entity.Article</class>
+
         <properties>
             <!--название бд-->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_lessons"/>
@@ -17,7 +19,7 @@
             <!--используемый драйвер-->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.level" value="FINE"/> <!-- ERROR / WARN -->
             <!-- при каждом запуске таблицы будут удаляться и создаваться заново (drop-and-create)
                  create, drop, drop-and-create, none -->
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
