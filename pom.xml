@@ -53,8 +53,31 @@
             <version>2.14.1</version>
         </dependency>
 
-        <!-- jakarta.persistence-api -->
+        <!-- ORM (Object Relational Mapping) -->
+
+
+        <!-- java-persistence-api (1, 2) JPA -->
+
+        <!-- jakarta.persistence-api (JPA) - набор абстракций,
+             один из стандартов работы ORM библиотек -->
+
+        <!-- Популярные реализации JPA: -->
+        <!-- eclipselink: реализация JPA -->
+        <!-- hibernate: реализация JPA + собственные методы-->
+
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
         <!-- eclipselink -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
 
     </dependencies>
 

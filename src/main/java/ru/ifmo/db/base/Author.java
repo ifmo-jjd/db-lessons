@@ -1,10 +1,13 @@
 package ru.ifmo.db.base;
 
+
 import java.util.Objects;
 
 public class Author {
     private int id;
+
     private String name;
+
     private int age;
 
     // геттеры, сеттеры, toString, equals, hashCode
