@@ -114,7 +114,7 @@ public class AuthorDao implements Dao<Author, Integer>{
     @Override
     public Author get(Integer integer) {
         Author author = null;
-        String select = "SELECT name, age FROM tb_authors" +
+        String select = "SELECT name, age FROM tb_authors " +
                 "WHERE author_id = ?";
         // в блоке where можно использовать операторы сравнения =, > < >= <= !=
         // в блоке where можно объединять условия через AND OR NOT

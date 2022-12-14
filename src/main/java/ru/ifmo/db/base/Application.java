@@ -12,6 +12,7 @@ public class Application {
        authorDao.add(author01);
 
        System.out.println(authorDao.get());
+       System.out.println(authorDao.get(1));
     }
 }
 

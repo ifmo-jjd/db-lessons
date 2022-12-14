@@ -3,22 +3,26 @@ package ru.ifmo.db.jpa.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity // TODO:: требования к Entity классам
 // задать имя таблице, установить индексы, связи с другими таблицами
 @Table(name = "tb_articles") // если класс называется User или Group,
 // необходимо задать новое имя таблице
+
+// все именованные запросы на SQL
 @NamedNativeQueries({ // SQL - в запросе используются названия из БД
-        @NamedNativeQuery(name = "get_all.native",
-                query = "SELECT id, title, article_text, created FROM tb_articles",
+        // каждый запрос описывается через NamedNativeQuery аннотацию
+        @NamedNativeQuery(name = "get_all.native", query = "SELECT id, title, article_text, created FROM tb_articles",
                 resultClass = Article.class)
         /*, следующий @NamedNativeQuery */
 })
+
+// все именованные запросы на JPQL
 @NamedQueries({ // JPQL - в запросе используются названия из программы
-        @NamedQuery(name = "get_all.jpql",
-                query = "SELECT a FROM Article a"),
-        @NamedQuery(name = "get_by_title.jpql",
-                query = "SELECT a FROM Article a WHERE a.title = :title")
+        @NamedQuery(name = "get_all.jpql", query = "SELECT a FROM Article a"),
+        @NamedQuery(name = "get_by_title.jpql", query = "SELECT a FROM Article a WHERE a.title = :title")
 })
 public class Article {
 
@@ -38,12 +42,18 @@ public class Article {
     // в таблице будет создан столбец created
     private LocalDateTime created;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @ManyToMany(mappedBy = "articles")
+    private List<Nomination> nominations;
+
     public Article() {
+        nominations = new ArrayList<>();
         created = LocalDateTime.now();
     }
 
     // геттеры и сеттеры
-
 
     public String getText() {
         return text;
@@ -75,5 +85,21 @@ public class Article {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Nomination> getNominations() {
+        return nominations;
+    }
+
+    public void setNominations(List<Nomination> nominations) {
+        this.nominations = nominations;
     }
 }

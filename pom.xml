@@ -53,6 +53,19 @@
             <version>2.14.1</version>
         </dependency>
 
+        <!--  валидация через аннотации -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.16.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b08</version>
+        </dependency>
+
         <!-- ORM (Object Relational Mapping) -->
 
 

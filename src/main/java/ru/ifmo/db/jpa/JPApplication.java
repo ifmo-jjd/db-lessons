@@ -1,10 +1,9 @@
 package ru.ifmo.db.jpa;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 import ru.ifmo.db.jpa.dao.ArticleDao;
 import ru.ifmo.db.jpa.entity.Article;
+import ru.ifmo.db.jpa.entity.User;
 
 public class JPApplication {
     public static void main(String[] args) {
@@ -63,5 +62,50 @@ public class JPApplication {
         System.out.println(articleDao.get());
 
         System.out.println(articleDao.getByTitle("JakartaPA"));
+
+        User paul = new User();
+        paul.setName("Paul");
+        paul.setAge(32);
+
+        // устанавливаем взаимные ссылки
+        paul.getArticles().add(article);
+        article.setUser(paul);
+
+        // в классе User можно создать метод
+        // void addArticle(Article article) {
+        //    можно добавить проверки
+        //    далее код, устанавливающий взаимные ссылки:
+        //    article.setAuthor(this);
+        //    articles.add(article);
+        // }
+
+        // и вызвать его вместо 2 предыдущих инструкций
+        // paul.addArticle(article);
+
+        // благодаря взаимным ссылкам и cascade = CascadeType.PERSIST в классе User
+        // вызов persist приведет к добавлению данных о пользователе и о статье
+        manager.getTransaction().begin();
+        manager.persist(paul);
+        manager.getTransaction().commit();
+
+
+        // @Table(name = "tb_articles")
+        // class Article
+
+        // @Column(name = "article_text", columnDefinition = "TEXT")
+        // private String text;
+
+        // 1. Использовать SQL: имена таблиц и столбцов как в БД
+        // SELECT article_text FROM tb_articles ...
+        // 2. Использовать JPQL: имена классов и свойств как в java приложении
+        // SELECT text FROM Article ...
+        // SQL / JPQL запросы можно написать через аннотации к entity классу
+        // SQL / JPQL запросы можно написать отдельно, например, в DAO классе
+
+        // 3. ООП подход в написании запросов Criteria API
+        // Criteria API запросы можно написать отдельно, например, в DAO классе
+
+
+        // java приложение  ->  фреймворк  ->  ORM (JPA) -> pgdriver (jdbc)
     }
 }
