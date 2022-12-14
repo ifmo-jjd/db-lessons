@@ -8,6 +8,18 @@ import java.time.LocalDateTime;
 // задать имя таблице, установить индексы, связи с другими таблицами
 @Table(name = "tb_articles") // если класс называется User или Group,
 // необходимо задать новое имя таблице
+@NamedNativeQueries({ // SQL - в запросе используются названия из БД
+        @NamedNativeQuery(name = "get_all.native",
+                query = "SELECT id, title, article_text, created FROM tb_articles",
+                resultClass = Article.class)
+        /*, следующий @NamedNativeQuery */
+})
+@NamedQueries({ // JPQL - в запросе используются названия из программы
+        @NamedQuery(name = "get_all.jpql",
+                query = "SELECT a FROM Article a"),
+        @NamedQuery(name = "get_by_title.jpql",
+                query = "SELECT a FROM Article a WHERE a.title = :title")
+})
 public class Article {
 
     @Id // столбец - первичный ключ, уникальный идентификатор записи

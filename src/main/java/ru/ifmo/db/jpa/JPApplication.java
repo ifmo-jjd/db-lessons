@@ -3,6 +3,7 @@ package ru.ifmo.db.jpa;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import ru.ifmo.db.jpa.dao.ArticleDao;
 import ru.ifmo.db.jpa.entity.Article;
 
 public class JPApplication {
@@ -58,5 +59,9 @@ public class JPApplication {
         manager.getTransaction().commit();
         */
 
+        ArticleDao articleDao = new ArticleDao(manager);
+        System.out.println(articleDao.get());
+
+        System.out.println(articleDao.getByTitle("JakartaPA"));
     }
 }
